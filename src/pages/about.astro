@@ -1,0 +1,14 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import { getEntry } from "astro:content";
+import { getDesc, getTitle } from "../utils";
+import { render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+---
+
+<PageLayout title={getTitle("About")} description={getDesc("The About Page")}>
+    <article class="base-card article" data-pagefind-body>
+        <h1>HELLO</h1>
+        Hi, I am Tina! How did youu find this page? Stalking?
+    </article>
+</PageLayout>

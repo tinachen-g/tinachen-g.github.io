@@ -1,0 +1,24 @@
+---
+// import { siteConfig } from "../config";
+import MainLayout from "../layouts/MainLayout.astro";
+// import { getCollection } from "astro:content";
+// import Pagination from "../components/Pagination.astro";
+// import type { CollectionEntry } from "astro:content";
+// import type { Page } from "astro";
+
+// export async function getStaticPaths({ paginate }) {
+//     const posts = await getCollection("posts", ({ data }) => {
+//         return import.meta.env.PROD ? data.isDraft !== true : true;
+//     });
+//     posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+//     return paginate(posts, { pageSize: siteConfig.page_size });
+// }
+
+// interface Props {
+//     page: Page<CollectionEntry<"posts">>;
+// }
+
+// const { page } = Astro.props;
+---
+
+<MainLayout />

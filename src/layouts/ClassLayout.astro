@@ -1,0 +1,55 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import ClassHeader from "../components/ClassHeader.astro";
+import Footer from "../components/Footer.astro";
+import { siteConfig } from "../config";
+
+interface Props {
+    title?: string;
+    description?: string;
+    image?: string;
+}
+
+const {
+    title = `${siteConfig.title} - ${siteConfig.description}`,
+    description = siteConfig.description,
+    image = siteConfig.avatar,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={siteConfig.language}>
+    <head>
+        <BaseHead title={title} description={description} image={image} />
+        <script is:inline>
+            const setTheme = (theme) => {
+                document.documentElement.classList.add(theme);
+            };
+
+            let theme = (() => {
+                if (localStorage.getItem("theme")) {
+                    return localStorage.getItem("theme");
+                }
+                if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                    return "dark";
+                }
+                return "light";
+            })();
+
+            setTheme(theme);
+            localStorage.setItem("theme", theme);
+        </script>
+    </head>
+
+    <body>
+        <ClassHeader />
+
+        <main class="mt-20 mb-4">
+            <div class="container-global">
+                <slot />
+            </div>
+        </main>
+
+        <Footer />
+    </body>
+</html>

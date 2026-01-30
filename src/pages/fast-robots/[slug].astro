@@ -1,0 +1,123 @@
+---
+import ClassLayout from "../../layouts/ClassLayout.astro";
+import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+    const labs = await getCollection("fast-robots", ({ data }) => {
+        return import.meta.env.PROD ? data.isDraft !== true : true;
+    });
+
+    return labs.map((lab) => ({
+        params: { slug: lab.id },
+        props: { lab },
+    }));
+}
+
+interface Props {
+    lab: CollectionEntry<"fast-robots">;
+}
+
+const { lab } = Astro.props;
+const { Content, headings } = await render(lab);
+
+const haveToc = headings.some(
+    (heading) => heading.depth === 2 || heading.depth === 3,
+);
+---
+
+<ClassLayout>
+    <div class="container flex items-start gap-10">
+        {
+            haveToc && (
+                <aside class="basis-[16rem] shrink-0 max-md:hidden sticky top-20 bg-base transition-all rounded-xl p-2">
+                    <ul>
+                        {headings.map((heading) => {
+                            switch (heading.depth) {
+                                case 2:
+                                    return (
+                                        <li>
+                                            <a
+                                                class="px-2 menu-item"
+                                                href={`#${heading.slug}`}
+                                            >
+                                                {heading.text}
+                                            </a>
+                                        </li>
+                                    );
+                                case 3:
+                                    return (
+                                        <li>
+                                            <a
+                                                class="pl-6 pr-2 menu-item"
+                                                href={`#${heading.slug}`}
+                                            >
+                                                {heading.text}
+                                            </a>
+                                        </li>
+                                    );
+                            }
+                        })}
+                    </ul>
+                </aside>
+            )
+        }
+
+        {/* MAIN CONTENT */}
+        <main class="grow overflow-hidden">
+            <article class="base-card">
+                <div class="prose">
+                    <h1
+                        class="!my-1 leading-tight text-zinc-900 dark:text-zinc-100"
+                    >
+                        {lab.data.title}
+                    </h1>
+
+                    {
+                        lab.data.description && (
+                            <p class="text-zinc-600 dark:text-zinc-400 mt-2">
+                                {lab.data.description}
+                            </p>
+                        )
+                    }
+                </div>
+
+                <div class="prose mt-6">
+                    <Content />
+                </div>
+            </article>
+        </main>
+
+        <!-- {/* RIGHT SIDEBAR */}
+        <aside class="shrink-0 w-[280px] hidden lg:block">
+            <AboutTheAuthor />
+        </aside> -->
+    </div>
+</ClassLayout>
+
+<script>
+    import { debounce } from "../../utils";
+    const links = document.querySelectorAll(".menu-item");
+
+    const handler = debounce(() => {
+        for (const link of links) {
+            const href = link.getAttribute("href");
+            if (!href) continue;
+
+            const target = document.querySelector(`[id="${href.slice(1)}"]`);
+
+            if (target) {
+                const offsetTop = target.getBoundingClientRect().top - 128;
+
+                if (offsetTop <= 0) {
+                    links.forEach((l) => l.classList.remove("bg-hover"));
+                    link.classList.add("bg-hover");
+                    history.replaceState(null, "", href);
+                }
+            }
+        }
+    });
+
+    document.addEventListener("scroll", handler);
+    document.addEventListener("DOMContentLoaded", handler);
+</script>

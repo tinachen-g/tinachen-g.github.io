@@ -1,0 +1,35 @@
+---
+import { Image } from "astro:assets";
+import Icon from "../../../public/pwa.webp";
+---
+
+<div class="about-the-author py-4 border-b">
+  <h3 class="font-extrabold uppercase mb-4 text-sm">About the Author</h3>
+
+  <div class="flex gap-4 items-center leading-tight not-prose">
+    <a
+      href="https://github.com/tinachen-g"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="rounded-full overflow-hidden shrink-0 w-[70px] h-[70px]"
+    >
+      <Image src={Icon} alt="Cute Hokkaido Bird" />
+    </a>
+
+    <div>
+      <a
+        href="https://www.linkedin.com/in/tina-chen-g/"
+        class="block font-bold text-inherit hover:text-[var(--link-color)]"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Tina Cheng
+      </a>
+      <small class="avatar__subtitle">𐔌՞ ܸ.ˬ.ܸ՞𐦯</small>
+    </div>
+  </div>
+
+  <div class="author-desc text-[.825rem] my-4">
+    <!-- about text -->
+  </div>
+</div>

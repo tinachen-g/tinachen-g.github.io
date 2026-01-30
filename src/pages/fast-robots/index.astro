@@ -1,0 +1,92 @@
+---
+import { siteConfig, socialLinks } from "../../config";
+import ClassLayout from "../../layouts/ClassLayout.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { Icon } from "astro-icon/components";
+
+const labs = await getCollection("fast-robots", ({ data }) => {
+  return import.meta.env.PROD ? data.isDraft !== true : true;
+});
+
+labs.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<ClassLayout>
+  <div class="flex items-start gap-6">
+    {/* LEFT SIDEBAR */}
+    <aside class="basis-[16rem] shrink-0 max-md:hidden sticky top-20">
+      <div class="base-card flex flex-col items-center p-4">
+        <img
+          src={siteConfig.avatar}
+          alt="avatar"
+          class="w-40 h-40 rounded-full dark:brightness-75 transition-all"
+        />
+
+        <div class="text-center font-bold text-xl mt-4">
+          {siteConfig.author}
+        </div>
+
+        <p
+          class="mt-2 text-sm text-zinc-600 dark:text-zinc-400 text-center leading-relaxed"
+        >
+          ECE 5160: Fast Robots @ Cornell
+        </p>
+
+        <div class="w-10 h-px bg-zinc-300 dark:bg-zinc-700 my-3"></div>
+
+        <p
+          class="mt-2 text-sm text-zinc-600 dark:text-zinc-400 text-center leading-relaxed"
+        >
+          CS · ORIE · ECE <br />
+          Senior / M.Eng. Student <br />
+          Interested in music, art, & robotics
+        </p>
+
+        <div class="flex mt-3 space-x-3">
+          {
+            socialLinks.map((link) => (
+              <a href={link.url} target="_blank">
+                <Icon
+                  class="w-7 h-7 hover:text-secondary transition-all"
+                  name={link.icon}
+                />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </aside>
+
+    {/* MAIN CONTENT */}
+    <div class="grow">
+      <ul class="space-y-4">
+        {
+          labs.map((lab) => (
+            <li>
+              <a
+                class="h-36 card p-4 flex flex-col"
+                href={`/fast-robots/${lab.id}`}
+              >
+                <h2 class="text-xl font-bold line-clamp-1">{lab.data.title}</h2>
+                <p class="line-clamp-2">{lab.data.description}</p>
+                <div class="mt-8 h-px w-full bg-zinc-300 dark:bg-zinc-600" />
+
+                <div class="mt-auto flex">
+                  <time datetime={lab.data.pubDate.toISOString()}>
+                    {lab.data.pubDate.toLocaleDateString(siteConfig.language, {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                      timeZone: "UTC",
+                    })}
+                  </time>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</ClassLayout>

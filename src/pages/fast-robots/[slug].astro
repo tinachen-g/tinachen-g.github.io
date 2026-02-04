@@ -22,7 +22,8 @@ const { lab } = Astro.props;
 const { Content, headings } = await render(lab);
 
 const haveToc = headings.some(
-    (heading) => heading.depth === 2 || heading.depth === 3,
+    (heading) =>
+        heading.depth === 1 || heading.depth === 2 || heading.depth === 3,
 );
 ---
 
@@ -34,6 +35,17 @@ const haveToc = headings.some(
                     <ul>
                         {headings.map((heading) => {
                             switch (heading.depth) {
+                                case 1:
+                                    return (
+                                        <li>
+                                            <a
+                                                class="px-1 menu-item"
+                                                href={`#${heading.slug}`}
+                                            >
+                                                {heading.text}
+                                            </a>
+                                        </li>
+                                    );
                                 case 2:
                                     return (
                                         <li>

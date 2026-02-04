@@ -4,6 +4,16 @@ description: IMU
 pubDate: 2026-02-11
 ---
 <article class="article">
-placeholder
 
-hello
+## Prelab 
+
+## Setup
+RC car & IMU
+
+## Accelerometer
+
+## Gyroscope
+
+## Data
+
+## Stunt

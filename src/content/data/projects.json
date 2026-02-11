@@ -1,9 +1,16 @@
 [
   {
     "id": 1,
-    "title": "Tina Cheng",
+    "title": "Ray-Tracer Environment",
+    "url": "https://www.cs.cornell.edu/courses/cs4620/2024fa/assignments/docs/assignments/c2/standouts/#matthew-chen--tina-cheng",
+    "description": "Standout submission for ray-traced scene inspired by Little Nightmares",
+    "avatar": "/ray_tracing.webp"
+  },
+  {
+    "id": 2,
+    "title": "Fast Robots Projects",
     "url": "https://tinachen-g.github.io/fast-robots/",
-    "description": "Labs for my fast robots class",
+    "description": "Labs for robotics class at Cornell",
     "avatar": "/pwa.webp"
   }
 ]

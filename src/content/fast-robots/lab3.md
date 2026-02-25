@@ -182,7 +182,7 @@ I also plotted the IMU data indicating the pitch and roll angle versus time.
 
 
 
-## 5000-level students
+## 5000-level Questions
 Many distance sensors are based on infrared trasmission. 
 
 Infrared reflective sensors estimate distance by emitting infrared light and measuring the intensity of the reflection from nearby objects. They are simple, low-cost, and work well at short ranges. However, their readings are strongly affected by surface color, texture, and ambient light, which can reduce accuracy and reliability under different conditions.
@@ -191,7 +191,7 @@ On the other hand, ToF sensors, measure distance by emitting a modulated IR lase
 
 To test the ToF sensitivity of sensors to colors and textures, I used 2 different colors and 3 textures (brown paper, light blue fluffy cloth, reflectiive/mirror) for obstacles at a distance of 30 cm away. 
 
-I found that color and texture and even reflective surfaces did not have any affect on the sensitivity of the sensor. 
+I found that color and texture and even reflective surfaces did not have any affect on the sensitivity of the sensor. Outputs can be found below.
 
 ![Brown paper ToF](../../../public/fast-robots/lab3/brown.png)
 

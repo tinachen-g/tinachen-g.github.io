@@ -1,7 +1,7 @@
 ---
 title: Lab 3
 description: Time of Flight (ToF) Sensor
-pubDate: 2026-02-18
+pubDate: 2026-02-25
 ---
 <article class="article">
 
@@ -193,13 +193,13 @@ To test the ToF sensitivity of sensors to colors and textures, I used 2 differen
 
 I found that color and texture and even reflective surfaces did not have any affect on the sensitivity of the sensor. Outputs can be found below.
 
-![Brown paper ToF](../../../public/fast-robots/lab3/brown.png)
+![Brown paper ToF](../../../public/fast-robots/lab3/brown.jpg)
 
 
-![Blue fluffy ToF](../../../public/fast-robots/lab3/blue.png)
+![Blue fluffy ToF](../../../public/fast-robots/lab3/blue.jpg)
 
 
-![Mirror ToF](../../../public/fast-robots/lab3/mirror.png)
+![Mirror ToF](../../../public/fast-robots/lab3/mirror.jpg)
 
 
 

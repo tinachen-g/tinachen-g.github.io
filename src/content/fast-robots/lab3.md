@@ -28,7 +28,7 @@ I chose to attach the long cords to the ToF sensors.
 ## Soldering (oh no)
 
 ### Schematic
-[QWIIC Schematic](../../../public/fast-robots/lab3/QWIIC.png)
+![QWIIC Schematic](../../../public/fast-robots/lab3/QWIIC.png)
 The blue connection indicated on the diagram above represents SDA, and the labeled yellow connection represents SCL.
 
 ## Working with ToF sensor

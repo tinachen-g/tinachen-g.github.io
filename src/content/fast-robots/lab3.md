@@ -132,25 +132,6 @@ To determine the ranging time, the difference between timestamps were recorded f
 ### Add Another ToF! (and the IMU)
 To add the second ToF sensor, the first ToF sensor now has to be written to a new address, 0x30, while the address of the newly initialized ToF sensor is 0x52.
 
-```c
-pinMode(XSHUT1, OUTPUT);
-digitalWrite(XSHUT1, LOW);   // sensor 1 OFF
-
-if (distanceSensor1.begin() != 0) {
-    Serial.println("Sensor 1 failed to begin. Check wiring.");
-    while(1);
-}
-Serial.println("Sensor 1 online!");
-
-distanceSensor1.setI2CAddress(ADDRESS);
-digitalWrite(XSHUT1, HIGH);
-
-if (distanceSensor2.begin() != 0) {
-    Serial.println("Sensor 2 failed to begin. Check wiring.");
-    while(1);
-}
-Serial.println("Both online!");
-```
 
 After connecting the second ToF sensor, I confirmed that both work
 ![Both ToF output](../../../public/fast-robots/lab3/connect_both_tof.png)

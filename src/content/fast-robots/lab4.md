@@ -273,13 +273,14 @@ I found that the minimum PWM to keep the RC car moving in a straight line when i
 [![Minimum PWM to Keep RC Car in Motion, Straight](https://img.youtube.com/vi/OEGjTs4Y_XA/0.jpg)](https://www.youtube.com/watch?v=OEGjTs4Y_XA)
 
 
-For a left on axis turn, the minimum PWM to keep the RC car moving when it was already in motion was approximately . 
+`Note: I reached the daily limit for Youtube uploads, so videos from this point on are temporarily uploaded to Google Drive but will update this page with proper Youtube links after limit resets.`
+For a left on axis turn, the minimum PWM to keep the RC car moving when it was already in motion was approximately 75. 
 
-[![Minimum PWM to Keep RC Car in Motion, Left On-Axis](https://img.youtube.com/vi/OEGjTs4Y_XA/0.jpg)](https://www.youtube.com/watch?v=OEGjTs4Y_XA)
+![Minimum PWM to Keep RC Car in Motion, Left On-Axis](https://drive.google.com/file/d/1UuIRzvRbsOp5QJB_uVTbN7hwvSnHThEk/view?usp=sharing)
 
-For a right on axis turn, the minimum PWM to keep the RC car moving when it was already in motion was approximately . 
+For a right on axis turn, the minimum PWM to keep the RC car moving when it was already in motion was approximately 53. 
 
-[![Minimum PWM to Keep RC Car in Motion, Right On-Axis](https://img.youtube.com/vi/OEGjTs4Y_XA/0.jpg)](https://www.youtube.com/watch?v=OEGjTs4Y_XA)
+![Minimum PWM to Keep RC Car in Motion, Right On-Axis](https://drive.google.com/file/d/1lcGaL_VUcRXUoqiHFYrBG-m-qGJJXlzu/view?usp=sharing)
 
 
 ## Acknowledgements 

@@ -48,9 +48,58 @@ The goal is to drive the robot toward a wall as fast as possible and stop precis
 
 e(t) is the error between the current position measured by the ToF sensor and the desired target position.
 
+```c
+// in loop()
+if (pid_running) {
+    run_pid_step();
+    if (millis() - pid_start_time > 5000) { // stop after 5 s
+        stopMotors();
+        pid_running = false;
+    }
+}
+```
+
+```c
+int scaleToPWM(float pid_output) {
+    if (abs(pid_output) < 10) return 0;
+    int sign = (pid_output > 0) ? 1 : -1;
+    int pwm  = DEADBAND + (int)abs(pid_output);
+    if (sign < 0) pwm = (int)(pwm)
+    return sign * constrain(pwm, 0, MAX_PWM);       
+}
+```
+
+
 
 ### Kp (The bigger the mistake, the bigger the correction now)
 I started with the proportional term, where correction = proportional gain x error e(t). I varied different values of Kp and kept Ki and Kd equal to 0. 
+
+```c
+// in run_pid_step()
+
+// ===================== PROPROTIONAL ==================
+float error   = curr_dist - SETPOINT; //if negative, go forward
+float kp_term = Kp * error;
+
+// code here...
+
+
+    float total = kp_term + ki_term + kd_term;
+    int   pwm = scaleToPWM(total);
+
+    if (pwm > 0) {
+        forward(pwm);
+    }
+    else if (pwm < 0) {
+        backward(-pwm);
+    }
+    else{ 
+        stopMotors();
+    }
+
+    log_pid(now, data_ready, curr_dist, (int)kp_term, (int)ki_term, (int)kd_term, (int)total, pwm);
+    
+```
 
 I started off with Kp = 0.03, which was a bit too conservative but Kp = 0.08 was overshot.
 
@@ -70,6 +119,11 @@ After adjusting the Kp, I found that the optimal value of Kp is 0.05 at a distan
 Pure P-control can leave a small steady-state offset because the motor deadband means a tiny error produces no output at all. Wind-up protection is applied (see 5000-level section below).
 
 For PI Controller, we keep Kd = 0 for now. 
+
+```c
+integral += error * dt;
+float ki_term = Ki * integral;
+```
 
 ![PI controller (Ki=0.002)](../../../public/fast-robots/lab5/pi002_first.png)
 
@@ -178,8 +232,13 @@ int exterp_distance() {
 
 ```
 
-## Close up, Recovery
+## It works!
+
+Here is an example of close up recovery.
 [PID Controller, Short](https://drive.google.com/file/d/1Cm0vgs4dNcM-Y_uZmy-VdkHery2GUCsu/view?usp=sharing)
+
+I also tested it with varying max speeds.
+[Max speed, 3 times](https://drive.google.com/file/d/1UuIRzvRbsOp5QJB_uVTbN7hwvSnHThEk/view?usp=sharing)
 
 
 ## 5000-level questions

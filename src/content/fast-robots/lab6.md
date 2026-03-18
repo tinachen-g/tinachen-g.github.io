@@ -261,3 +261,7 @@ Integrator windup occurs when the motor output is already saturated but the erro
 This helps keep behavior consistent across floor surfaces.
 
 [![Wind up protection](https://img.youtube.com/vi/ScaXJXPCemY/0.jpg)](https://www.youtube.com/watch?v=ScaXJXPCemY)
+
+## Acknowledgements
+
+I referenced the Aidan McNay's past lab report from from Spring 2025. 

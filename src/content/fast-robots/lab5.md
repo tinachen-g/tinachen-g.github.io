@@ -190,8 +190,7 @@ To fix this, I ran the PID every loop iteration while estimating the distance be
 
 
 
-[PID Controller, Extrapolation](https://drive.google.com/file/d/1PD8AgmccppMnegKdF_xzVx3STeNmeP0h/view?usp=sharing)
-
+[![PID Controller, Extrapolation](https://img.youtube.com/vi/EXvJnQ2XHQY/0.jpg)](https://youtu.be/EXvJnQ2XHQY)
 
 ```c
 // in run_pid_step()
@@ -235,11 +234,10 @@ int exterp_distance() {
 ## It works!
 
 Here is an example of close up recovery.
-[PID Controller, Short](https://drive.google.com/file/d/1Cm0vgs4dNcM-Y_uZmy-VdkHery2GUCsu/view?usp=sharing)
+[![PID Controller, Short](https://img.youtube.com/vi/0dwFrNa9S7E/0.jpg)](https://youtu.be/0dwFrNa9S7E)
 
 I also tested it with varying max speeds.
-[Max speed, 3 times](https://drive.google.com/file/d/1UuIRzvRbsOp5QJB_uVTbN7hwvSnHThEk/view?usp=sharing)
-
+[![Max speed, 3 times](https://img.youtube.com/vi/C5rgbXVBNd8/0.jpg)](https://youtu.be/C5rgbXVBNd8)
 
 ## 5000-level questions
 
@@ -260,7 +258,7 @@ if (!saturated) {
 float ki_term = Ki * integral;
 
 ```
-[PID Controller, Wind-up Clamp](https://drive.google.com/file/d/1Cm0vgs4dNcM-Y_uZmy-VdkHery2GUCsu/view?usp=sharing)
+[![PID Controller, Wind-up Clamp](https://img.youtube.com/vi/38nqA7DPdlQ/0.jpg)](https://youtu.be/38nqA7DPdlQ)
 
 
 We can see that the non-clamped term builds up (“winds up”), which may lead to overshoot. Since our actual term is clamped, no such buildup occurs when at max control and we don't encounter a large overshoot.

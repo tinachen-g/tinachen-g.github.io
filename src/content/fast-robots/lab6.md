@@ -79,15 +79,9 @@ int scaleToOrientPWM(float pid_output) {
 
 ## PID Input Signal & Setup
 
-
-Are there limitations on the sensor itself to be aware of? What is the maximum rotational velocity that the gyroscope can read (look at spec sheets and code documentation on github). Is this sufficient for our applications, and is there was to configure this parameter?
-
-`The ICM-20948 gyroscope has a configurable full-scale range. The default in the SparkFun library is ±250°/s, but it can be set to ±500, ±1000, or ±2000°/s. For slow, controlled turns this is fine, but during a fast stunt the robot can easily exceed 250°/s — at that point the sensor saturates and the integrated yaw becomes irreparably wrong. For aggressive maneuvers, setting the range to ±2000°/s is advisable, at the cost of slightly lower resolution. In the SparkFun library this is configured via myICM.setFullScale(...).`
-
-
 I integrated the gyroscope to get an estimate for the orientation of the robot. Yaw is obtained by numerically integrating the gyroscope's z-axis angular velocity over time: yaw += gyrZ * dt. This gives a continuously updated angle estimate between IMU readings but any small constant bias in the sensor reading accumulates unboundedly and numerical rounding errors. 
 
-To reduce this bias, I used the onboard digital motion processor (DMP) built into your IMU to minimize yaw drift.
+To reduce this bias, I used the onboard digital motion processor (DMP) built into my IMU to minimize yaw drift.
 
 
 ### Digital Motion Processing

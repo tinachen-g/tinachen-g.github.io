@@ -109,12 +109,11 @@ void run_flip_step() {
       stunt_idx++;
     }
 }
-
-
 ```
 
 I tested out a few stunts after my initial implementation to see what needed improving. After running a few times, I achieved mostly successes where the robot successfully flipped and continued driving back to the start position. Therefore, I did not add PID control on the speed of the robot instead of the position nor PID control of the angle. The exceptions can be found in the blooper reel. 
----
+
+
 ## Examples
 
 At varying designated lines (<4m from the wall), the car drives fast forward, and upon reaching the sticky mat with a center located 1ft from the wall, performs a flip, and drives back in the direction from which it came. It must re-cross the starting line.
